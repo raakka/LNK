@@ -90,8 +90,8 @@ int main() {
 	while(1) {
 		// TODO(XVI): make the buffer sizes dynamic having 1024 limit is dumb
 		char msg[1024];
-		scanf("%s: %s", usr, msg);	
-		send(client_socket,msg,1024,0);
+		scanf("%s", msg);	
+		send(client_socket, (const char *)msg, 1024, 0);
 	}
 
 }
