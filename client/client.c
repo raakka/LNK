@@ -25,7 +25,7 @@ int main() {
 	int client_socket;
 	struct sockaddr_in server_addr;
 
-	if (client_socket = socket(PF_INET, SOCK_STREAM, 0) < 0) {
+	if ((client_socket = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
 		perror("Cannot Create Socket!");
 		exit(EXIT_FAILURE);
 	}
