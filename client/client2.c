@@ -31,23 +31,24 @@ int main() {
 		perror("Cannot Create Socket!");
 		exit(EXIT_FAILURE);
 	}
-
-	memset(&server_addr, 0, sizeof(server_addr));
-	memset(&this_addr, 0, sizeof(server_addr));
 	
-	// this is our address
-	this_addr.sin_family = AF_INET;
-	this_addr.sin_port = htons(8080);
-	this_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	memset(&server_addr, 0, sizeof(server_addr));
+	memset(&this_addr, 0, sizeof(this_addr));
 
-	// who we are sending messages to
+	// the person we are sending to	
 	server_addr.sin_family = AF_INET;
-	server_addr.sin_port = htons(8888);
+	server_addr.sin_port = htons(8080);
 	server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-	// TODO(XVI): make this have error handling
+	// this client's address 
+	this_addr.sin_family = AF_INET;
+	this_addr.sin_port = htons(8888);
+	this_addr.sin_addr.s_addr = inet_addr("127.0.0.1");	
+
+	// TODO(XVI) add a thing if this goes bad...
+	// binding the client so we know it has a place
 	bind(client_socket, (struct sockaddr *)&this_addr, sizeof(this_addr));
-	
+
 	// connect the client socket!
 	if (connect(client_socket, (struct sockaddr*) &server_addr,	sizeof(server_addr)) == -1) {
 		perror("Cannot Connect to Server!");	
