@@ -79,7 +79,7 @@ int main() {
 	
 	sleep(1);
 	printf("SYSTEM LOGIN SUCCESSFUL\n");
-	printf("STARTING THREADS\n\n\n\n");
+	printf("STARTING THREADS\n\n");
 	sleep(1);
 	printf("MESSAGES ════════════════════════════════════════════════\n");
 
@@ -90,7 +90,8 @@ int main() {
 	while(1) {
 		// TODO(XVI): make the buffer sizes dynamic having 1024 limit is dumb
 		char msg[1024];
-		scanf("%s", msg);	
+		fgets(msg, 1024, stdin);
+		//scanf("%s", msg);	
 		send(client_socket, (const char *)msg, 1024, 0);
 	}
 
